@@ -1,4 +1,5 @@
 <template>
+   <div class ="titulo">a</div>
    <div class="calculadora">
     <div class="display">{{valorCorrente || '0'}}</div>
     <div @click = "limpar" class="botao">C</div>
@@ -22,11 +23,10 @@
     <div @click = "resultado" class="botao">=</div>
     <div @click = "log10" class = "botao operadores log1">log10</div>
     <div @click = "logxy" class = "botao operadores log2">logxy</div>
-    <div class = "botao operadores">2√</div>
-    <div class = "botao operadores">x√y</div>
-    <div class = "botao operadores">x^2</div>
-    <div class = "botao operadores">x^y</div>
-    
+    <div @click = "raizQuadrada" class = "botao operadores">2√</div>
+    <div @click = "raizxy" class = "botao operadores">x√y</div>
+    <div @click = "quadrado" class = "botao operadores">x^2</div>
+    <div @click = "potencia" class = "botao operadores">x^y</div>
 
   </div>
 </template>
@@ -36,7 +36,7 @@ export default {
 
   data() {
     return {
-      valorCorrente: '8',
+      valorCorrente: '',
       numeroAnterior: null,
       operador: null,
       operadorClicado: false,
@@ -103,7 +103,23 @@ export default {
       this.operador = (num1, num2) => Math.log10(num1) / Math.log10(num2);
       this.setarValor();
     },
-
+    raizQuadrada() {
+      this.valorCorrente = Math.sqrt(this.valorCorrente);
+    },
+    raizxy() {
+      // eslint-disable-next-line no-restricted-properties
+      this.operador = (num1, num2) => Math.pow(num2, 1 / num1);
+      this.setarValor();
+    },
+    quadrado() {
+      // eslint-disable-next-line no-restricted-properties
+      this.valorCorrente = Math.pow(this.valorCorrente, 2);
+    },
+    potencia() {
+      // eslint-disable-next-line no-restricted-properties
+      this.operador = (num1, num2) => Math.pow(num1, num2);
+      this.setarValor();
+    },
   },
 };
 </script>
