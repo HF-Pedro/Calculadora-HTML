@@ -1,5 +1,5 @@
+<!-- eslint-disable vue/valid-template-root -->
 <template>
-   <div class ="titulo">a</div>
    <div class="calculadora">
     <div class="display">{{valorCorrente || '0'}}</div>
     <div @click = "limpar" class="botao">C</div>
@@ -27,7 +27,6 @@
     <div @click = "raizxy" class = "botao operadores">x√y</div>
     <div @click = "quadrado" class = "botao operadores">x^2</div>
     <div @click = "potencia" class = "botao operadores">x^y</div>
-
   </div>
 </template>
 
